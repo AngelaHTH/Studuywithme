@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="studywtihme.png" type="image/x-icon">
+    <title>Learning Style Quiz</title>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e4e8f0; /* Lightened background for better contrast */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .question {
+            margin-bottom: 40px; 
+        }
+
+        .question p {
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #8D9ABF; /* Updated button color */
+            color: white; /* Text color for buttons */
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            margin: 0 5px; 
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #7A8DAF; /* Darker shade for hover effect */
+            transform: scale(1.05); 
+        }
+
+        button:disabled {
+            background-color: #b0b7d1; /* Disabled button color */
+            cursor: not-allowed; 
+            opacity: 0.7; 
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #tips {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #8D9ABF; /* Updated border color */
+            border-radius: 4px;
+            background-color: white; 
+            display: none; 
+        }
+        
+        .pagination-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz">
+        <div class="quiz-container">
+            <h2 style="text-align: center; color: #8D9ABF;">What Is Your Learning Style?</h2>
+            <p>Answer the following questions to find out your preferred learning style:</p>
+            
+            <div id="quizForm"></div>
+            
+            <div class="pagination-btns">
+                <button id="prevBtn" style="display: none;">Previous</button>
+                <button id="nextBtn">Next</button>
+            </div>
+            
+            <div class="pagination-btns">
+                <button id="submitBtn" style="display: none;">Submit</button>
+                <button id="clearBtn">Clear</button>
+            </div>
+            
+            <div id="result"></div>
+            <div id="tips"></div> 
+        </div>
+        
+        <script>
+            const questions = [
+                // Questions as defined previously
+                {
+                    question: "When you are learning a new skill, how do you prefer to get started?",
+                    options: [
+                        "A) Watch a video or look at diagrams showing how it’s done.",
+                        "B) Listen to someone explain it.",
+                        "C) Read instructions or a manual.",
+                        "D) Jump in and try it out yourself."
+                    ]
+                },
+                {
+                    question: "In a classroom setting, what helps you understand the material better?",
+                    options: [
+                        "A) Seeing charts, graphs, and other visual aids.",
+                        "B) Listening to lectures and discussions.",
+                        "C) Reading the textbook and taking detailed notes.",
+                        "D) Engaging in hands-on activities and experiments."
+                    ]
+                },
+                {
+                    question: "How do you remember phone numbers or other numerical information?",
+                    options: [
+                        "A) Visualize the numbers in your mind.",
+                        "B) Say the numbers out loud to yourself.",
+                        "C) Write the numbers down multiple times.",
+                        "D) Remember how you dialed it or the physical act of writing it down."
+                    ]
+                },
+                {
+                    question: "When preparing for a test, what study method do you prefer?",
+                    options: [
+                        "A) Creating mind maps, charts, or drawings.",
+                        "B) Listening to recorded notes or discussing with a study group.",
+                        "C) Reading and summarizing your notes.",
+                        "D) Doing practice problems or using flashcards."
+                    ]
+                },
+                {
+                    question: "When you follow directions to a new place, how do you prefer to get them?",
+                    options: [
+                        "A) Look at a map or visual diagram.",
+                        "B) Listen to someone explain the directions.",
+                        "C) Read the directions.",
+                        "D) Just start driving and figure it out along the way."
+                    ]
+                },
+                {
+                    question: "How do you solve problems or understand new concepts best?",
+                    options: [
+                        "A) By visualizing the problem or concept.",
+                        "B) By talking through the problem or concept.",
+                        "C) By reading about the problem or concept in detail.",
+                        "D) By physically manipulating parts of the problem or using real-life examples."
+                    ]
+                },
+                {
+                    question: "When you need to memorize a list of items, what technique works best for you?",
+                    options: [
+                        "A) Creating a visual image or drawing.",
+                        "B) Repeating the list out loud.",
+                        "C) Writing the list down multiple times.",
+                        "D) Acting out or using physical objects to represent each item."
+                    ]
+                },
+                {
+                    question: "When learning something new, which method do you find most effective?",
+                    options: [
+                        "A) Watching demonstrations or visual presentations.",
+                        "B) Listening to explanations and discussions.",
+                        "C) Reading instructions or detailed descriptions.",
+                        "D) Engaging in practical activities or hands-on experiences."
+                    ]
+                },
+                {
+                    question: "How do you prefer to give presentations or explain concepts to others?",
+                    options: [
+                        "A) Using slides or visual aids to support your explanation.",
+                        "B) Talking through the concepts in detail.",
+                        "C) Writing out detailed notes or a script.",
+                        "D) Demonstrating or using props to illustrate your points."
+                    ]
+                },
+                {
+                    question: "When solving a problem, how do you prefer to approach it?",
+                    options: [
+                        "A) Drawing diagrams or visual representations.",
+                        "B) Discussing the problem with others.",
+                        "C) Researching and reading about similar problems and solutions.",
+                        "D) Experimenting with different solutions and seeing what works."
+                    ]
+                }
+            ];           
+            const studyTips = {
+                // Study tips as defined previously
+                A: [
+                    "Use Visual Aids: Incorporate charts, graphs, and diagrams to represent information.",
+                    "Color Coding: Highlight key information using different colors.",
+                    "Create Visual Summaries: Summarize information in graphic organizers or drawings.",
+                    "Leverage Technology: Utilize apps and tools that support visual learning.",
+                    "Practice Visualization: Create mental images of what you’re learning."
+                ],
+                B: [
+                    "Choose the Right Environment: Find a quiet space and use noise-cancelling headphones if needed.",
+                    "Active Listening: Engage actively with the material by taking notes.",
+                    "Take Breaks: Listen in manageable chunks and take regular breaks.",
+                    "Use Supplementary Materials: Follow along with transcripts or related reading materials.",
+                    "Practice and Apply: Apply what you've learned through practice or discussion."
+                ],
+                C: [
+                    "Create Detailed Notes: Take detailed notes and summarize them regularly.",
+                    "Use Reading Materials: Utilize textbooks, articles, and manuals for in-depth understanding.",
+                    "Write and Rewrite: Write down key information multiple times to reinforce learning.",
+                    "Use Flashcards: Create flashcards with key terms and concepts.",
+                    "Engage in Writing Activities: Practice writing essays or summaries about what you’ve learned."
+                ],
+                D: [
+                    "Engage in Hands-On Activities: Use physical objects or real-life examples to understand concepts.",
+                    "Practice Regularly: Do practice problems or use flashcards.",
+                    "Teach Others: Explain the material to someone else to reinforce your understanding.",
+                    "Participate in Experiments: Get involved in hands-on experiments or activities.",
+                    "Use Movement: Incorporate movement into your study sessions to keep engaged."
+                ]
+            };          
+            let currentPage = 1;
+            const questionsPerPage = 2;
+            function createQuiz() {
+                const quizForm = document.getElementById('quizForm');             
+                // Generate pages
+                for (let i = 0; i < questions.length; i += questionsPerPage) {
+                    const pageDiv = document.createElement('div');
+                    pageDiv.classList.add('page');
+                    if (i !== 0) pageDiv.style.display = 'none'; // Hide all pages except the first one
+                    
+                    for (let j = i; j < i + questionsPerPage && j < questions.length; j++) {
+                        const q = questions[j];
+                        const questionDiv = document.createElement('div');
+                        questionDiv.classList.add('question');
+                        
+                        const questionText = document.createElement('p');
+                        questionText.textContent = `${j + 1}. ${q.question}`;
+                        questionDiv.appendChild(questionText);
+                        
+                        const optionsDiv = document.createElement('div');
+                        optionsDiv.classList.add('options');
+                        for (let k = 0; k < q.options.length; k++) {
+                            const optionLabel = document.createElement('label');
+                            const optionInput = document.createElement('input');
+                            optionInput.type = 'radio';
+                            optionInput.name = `question${j}`;
+                            optionInput.value = String.fromCharCode(65 + k); // A, B, C, D
+                            optionLabel.appendChild(optionInput);
+                            optionLabel.appendChild(document.createTextNode(q.options[k]));
+                            optionsDiv.appendChild(optionLabel);
+                        }
+                        questionDiv.appendChild(optionsDiv);
+                        pageDiv.appendChild(questionDiv);
+                    }
+                    quizForm.appendChild(pageDiv);
+                }
+            }
+
+            createQuiz(); // Call the function to generate the quiz
+
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                const currentDiv = document.querySelector('.page:not([style*="display: none"])');
+                const inputs = currentDiv.querySelectorAll('input[type="radio"]');
+                let answered = true;
+
+                // Check if all questions on the page have been answered
+                const questionGroups = {};
+                inputs.forEach(input => {
+                    if (!questionGroups[input.name]) {
+                        questionGroups[input.name] = false;
+                    }
+                    if (input.checked) {
+                        questionGroups[input.name] = true;
+                    }
+                });
+
+                for (let key in questionGroups) {
+                    if (!questionGroups[key]) {
+                        answered = false;
+                        break;
+                    }
+                }
+
+                if (!answered) {
+                    alert("Please answer all questions on this page before proceeding.");
+                    return; // Stop execution if not all questions are answered
+                }
+
+                currentDiv.style.display = 'none'; // Hide current page
+                currentPage++; // Move to next page
+                const nextDiv = document.querySelector(`.page:nth-of-type(${currentPage})`);
+                if (nextDiv) {
+                    nextDiv.style.display = 'block'; // Show next page
+                    document.getElementById('prevBtn').style.display = 'inline'; // Show Previous button
+                    if (!document.querySelector(`.page:nth-of-type(${currentPage + 1})`)) {
+                        document.getElementById('nextBtn').style.display = 'none'; // Hide Next button if last page
+                        document.getElementById('submitBtn').style.display = 'inline'; // Show Submit button
+                    }
+                }
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                const currentDiv = document.querySelector('.page:not([style*="display: none"])');
+                currentDiv.style.display = 'none'; // Hide current page
+                currentPage--; // Move to previous page
+                const prevDiv = document.querySelector(`.page:nth-of-type(${currentPage})`);
+                prevDiv.style.display = 'block'; // Show previous page
+                if (currentPage === 1) {
+                    document.getElementById('prevBtn').style.display = 'none'; // Hide Previous button on first page
+                }
+                document.getElementById('nextBtn').style.display = 'inline'; // Show Next button
+                document.getElementById('submitBtn').style.display = 'none'; // Hide Submit button
+            });
+
+            document.getElementById('submitBtn').addEventListener('click', function() {
+                const results = {
+                    A: 0,
+                    B: 0,
+                    C: 0,
+                    D: 0
+                };
+
+                const inputs = document.querySelectorAll('input[type="radio"]:checked');
+                inputs.forEach(input => {
+                    results[input.value]++;
+                });
+
+                const highestScore = Math.max(results.A, results.B, results.C, results.D);
+                let learningStyle = 'Unknown';
+                if (highestScore === results.A) {
+                    learningStyle = 'Visual Learner';
+                } else if (highestScore === results.B) {
+                    learningStyle = 'Auditory Learner';
+                } else if (highestScore === results.C) {
+                    learningStyle = 'Read/Write Learner';
+                } else if (highestScore === results.D) {
+                    learningStyle = 'Kinesthetic Learner';
+                }
+
+                document.getElementById('result').textContent = `Your Learning Style: ${learningStyle}`;
+                document.getElementById('tips').style.display = 'block';
+
+                // Update the key for studyTips based on the learning style
+                let studyTipsKey = '';
+                if (learningStyle === 'Visual Learner') {
+                    studyTipsKey = 'A';
+                } else if (learningStyle === 'Auditory Learner') {
+                    studyTipsKey = 'B';
+                } else if (learningStyle === 'Read/Write Learner') {
+                    studyTipsKey = 'C';
+                } else if (learningStyle === 'Kinesthetic Learner') {
+                    studyTipsKey = 'D';
+                }
+
+                document.getElementById('tips').innerHTML = `<h3>Study Tips for ${learningStyle}:</h3><ul>${studyTips[studyTipsKey].map(tip => `<li>${tip}</li>`).join('')}</ul>`;
+            });
+
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                location.reload(); // Reload the page to clear results
+            });
+        </script>
+    </div>
+</body>
+</html>

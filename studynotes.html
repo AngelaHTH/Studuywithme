@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="studywtihme.png" type="image/x-icon">
+    <title>Study Notes</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px; /* Add padding for space around content */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            overflow: auto; /* Allow scrolling if content overflows */
+        }
+
+        /* Remove underline from links */
+        a {
+            text-decoration: none; /* Remove the purple underline */
+            color: inherit; /* Ensure text retains the original color */
+        }
+
+        /* Container for the grid */
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #8D9ABF; /* Updated color */
+            margin-bottom: 40px;
+        }
+
+        /* Grid layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px; /* Increased gap between grid items */
+        }
+
+        /* Card styling */
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%; /* Full width of the card */
+            height: 250px; /* Set the height to 250px */
+            object-fit: cover; /* Crop the image to fit */
+        }
+
+        .card-content {
+            background-color: #8D9ABF; /* Updated color */
+            padding: 10px; /* Reduce padding to make the content area smaller */
+            flex-grow: 1;
+        }
+
+        .card-content h2 {
+            font-size: 1.2rem; /* Adjust font size */
+            color: white; /* Keep white for contrast */
+            margin: 0 0 5px; /* Reduce margin */
+        }
+
+        .card-content p {
+            font-size: 0.9rem; /* Adjust font size */
+            color: white; /* Keep white for contrast */
+            margin: 10; /* Remove extra margin below the text */
+        }
+
+        /* Make responsive */
+        @media screen and (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Study Notes </h1>
+        <div class="grid">
+            <a href="https://drive.google.com/drive/folders/141dpTyjahX0HiHf49dgfkFwKcTFkBbpu?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="english.png" alt="English">
+                    <div class="card-content">
+                        <h2> English</h2>
+                        <p>Comprehensive resources on grammar, literature analysis, and writing skills to help you master English.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1eTOLLdoSQYjzOUTfgRxFDVTZ4Zyx5FJZ?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="chinese.png" alt="Chinese">
+                    <div class="card-content">
+                        <h2> Chinese</h2>
+                        <p>Practice your Chinese reading, writing, and comprehension with these in-depth study materials.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1pKT5D2gqOd5lUY7RaaDWopRRKmFjlNaQ?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="EA-Math.png" alt="E/A-Math">
+                    <div class="card-content">
+                        <h2> E/A-Math</h2>
+                        <p>From algebra to calculus, find step-by-step solutions and exam-ready exercises.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1Vrcfx0s7nsDpotpA76zTmTaGUmOCHK0l?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="socialstudies.png" alt="Social Studies">
+                    <div class="card-content">
+                        <h2> Social Studies</h2>
+                        <p>Explore key social studies concepts and case studies with easy-to-follow guides and notes.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1fuuOwbHCADT1y7fbhmrxywZZC5mRa4l-?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="geography.png" alt="Geography">
+                    <div class="card-content">
+                        <h2> Geography</h2>
+                        <p>Study physical and human geography, with notes and exercises to prepare you for exams.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1TapXSjKHXaEULXicTpT6n5QU8TvTpead?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="history.png" alt="History">
+                    <div class="card-content">
+                        <h2> History</h2>
+                        <p>Unlock key historical events and eras with summaries, timelines, and detailed notes.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/17niUiZ0jKYr-kQbUMULm5xljbvsxQWun?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="chemistry.png" alt="Chemistry">
+                    <div class="card-content">
+                        <h2> Chemistry</h2>
+                        <p>Dive into chemical reactions, equations, and concepts with these easy-to-follow chemistry notes.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1zKfk6g0XaDY_Sy8J1cK96H-EbUFuiwyq?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="physics.png" alt="Physics">
+                    <div class="card-content">
+                        <h2> Physics </h2>
+                        <p>Understand the principles of physics through key topics and problem-solving exercises.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1ar68OWZmyIIjtGxrEVLNuz-vpYgMLh1t?usp=drive_link" target="_blank">
+                <div class="card">
+                    <img src="biology.png" alt="Biology">
+                    <div class="card-content">
+                        <h2> Biology </h2>
+                        <p>Explore living organisms, ecosystems, and biology processes with in-depth notes and practice papers.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

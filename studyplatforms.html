@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="studywtihme.png" type="image/x-icon">
+    <title>Study Platforms</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px; /* Add padding for space around content */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            overflow: auto; /* Allow scrolling if content overflows */
+        }
+
+        /* Remove underline from links */
+        a {
+            text-decoration: none; /* Remove the purple underline */
+            color: inherit; /* Ensure text retains the original color */
+        }
+
+        /* Container for the grid */
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #8D9ABF; /* Updated color */
+            margin-bottom: 40px;
+        }
+
+        /* Grid layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px; /* Increased gap between grid items */
+        }
+
+        /* Card styling */
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%; /* Full width of the card */
+            height: 250px; /* Set the height to 250px */
+            object-fit: cover; /* Crop the image to fit */
+        }
+
+        .card-content {
+            background-color: #8D9ABF; /* Updated color */
+            padding: 10px; /* Reduce padding to make the content area smaller */
+            flex-grow: 1;
+        }
+
+        .card-content h2 {
+            font-size: 1.2rem; /* Adjust font size */
+            color: white; /* Keep white for contrast */
+            margin: 0 0 5px; /* Reduce margin */
+        }
+
+        .card-content p {
+            font-size: 0.9rem; /* Adjust font size */
+            color: white; /* Keep white for contrast */
+            margin: 10; /* Remove extra margin below the text */
+        }
+
+        /* Make responsive */
+        @media screen and (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Study Platforms </h1>
+        <div class="grid">
+            <a href="https://smiletutor.sg/free-test-papers-download/secondary-school-exam-papers/" target="_blank">
+                <div class="card">
+                    <img src="smile tutor.png" alt="Smile Tutor (Free Test Paper)">
+                    <div class="card-content">
+                        <h2>Smile Tutor (Free Test Paper)</h2>
+                        <p>Provides free secondary school test papers for various subjects from different schools.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.freetestpaper.com" target="_blank">
+                <div class="card">
+                    <img src="testpaper.png" alt="Free Test Paper">
+                    <div class="card-content">
+                        <h2>Free Test Paper</h2>
+                        <p>Provides free primary and secondary school test papers for various subjects from different schools.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.testpapersfree.com/secondary/index.php" target="_blank">
+                <div class="card">
+                    <img src="testpaper.png" alt="Free Test Paper">
+                    <div class="card-content">
+                        <h2>Free Test Paper</h2>
+                        <p>Provides free primary and secondary school test papers for various subjects from different schools.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://sites.google.com/site/urbangeekclassroomsg/social-studies/answering-sbq
+            " target="_blank">
+                <div class="card">
+                    <img src="testpaper.png" alt="Free Test Paper">
+                    <div class="card-content">
+                        <h2>Free Test Paper</h2>
+                        <p>Provides study tips for different subject ranging from maths to humanities for o level.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.coursera.org" target="_blank">
+                <div class="card">
+                    <img src="coursera.png" alt="Coursera">
+                    <div class="card-content">
+                        <h2>Coursera</h2>
+                        <p>Coursera is an online learning platform that offers access to courses from various universities and companies.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://grow.google/intl/uk/" target="_blank">
+                <div class="card">
+                    <img src="google.webp" alt="Google Online Course">
+                    <div class="card-content">
+                        <h2>Google Online Course</h2>
+                        <p>Google Certificates offer online courses to help start your career in high-growth fields like data analysis and project management.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://sdgacademy.org/courses/" target="_blank">
+                <div class="card">
+                    <img src="SDG academy.png" alt="SDG academy">
+                    <div class="card-content">
+                        <h2> SDG Academy</h2>
+                        <p> The SDG Academy offers free massive open online courses (MOOCs), educational videos, webinars, and other resources on sustainable development.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.khanacademy.org" target="_blank">
+                <div class="card">
+                    <img src="Khan academmy.png" alt="Khan Academy">
+                    <div class="card-content">
+                        <h2>Khan Academy</h2>
+                        <p>Khan Academy is a free learning app for Class 1-12 students with videos, exercises, and tests for math, science, and more subjects.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.edx.org/" target="_blank">
+                <div class="card">
+                    <img src="edx.png" alt="Edx">
+                    <div class="card-content">
+                        <h2>Edx</h2>
+                        <p>Access free online courses from top universities and institutions worldwide, covering a wide range of subjects from technology to business and humanities.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.openlearning.com/" target="_blank">
+                <div class="card">
+                    <img src="openlearning.jpeg" alt="Open Learning">
+                    <div class="card-content">
+                        <h2>Open Learning</h2>
+                        <p>Engage in interactive courses focused on a learner-driven approach, where you can collaborate and learn through practical projects and community participation.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://business.udemy.com/get-a-free-demo/?utm_source=paid-search&utm_medium=google&utm_campaign=search-nb-onlinetrainingcourses-apac&utm_content=g&utm_term=online+learning+management+system&utm_region=gb-apac&gad_source=1&gclid=Cj0KCQjwu-63BhC9ARIsAMMTLXRoEnFjAwOriIyu9cXyBr9QqW_w57EN3V1uOrscs4L0MiE196GB8u0aAhF8EALw_wcB" target="_blank">
+                <div class="card">
+                    <img src="udemy.jpg" alt="Udemy">
+                    <div class="card-content">
+                        <h2>Udemy</h2>
+                        <p>Learn new skills at your own pace with thousands of affordable online courses on a variety of topics, from programming to personal development, taught by industry experts.</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://www.w3schools.com" target="_blank">
+                <div class="card">
+                    <img src="w3school.jpg" alt="W3Schools">
+                    <div class="card-content">
+                        <h2>W3Schools</h2>
+                        <p>W3Schools is a freemium educational website for learning coding online for various programming languages.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.codechef.com" target="_blank">
+                <div class="card">
+                    <img src="codechef.webp" alt="Code Chef">
+                    <div class="card-content">
+                        <h2>Code Chef</h2>
+                        <p>CodeChef is an online platform to learn and practice programming, beginner-friendly.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.freecodecamp.org/" target="_blank">
+                <div class="card">
+                    <img src="freecodecamp.png" alt="Free Code Camp">
+                    <div class="card-content">
+                        <h2> Free Code Camp</h2>
+                        <p> FreeCodeCamp can strengthen your programming skills and introduce you to a wider array of programming languages and concepts</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

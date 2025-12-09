@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="studywtihme.png" type="image/x-icon">
+        <title>StudyWithMe</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                color: #7F8AA3;
+                background-color: #FFFFFF;
+                scroll-behavior: smooth;
+            }
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #8D9ABF;
+                padding: 15px 30px;
+            }
+            /* Logo Styles */
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+            .logo p {
+                font-size: 20px;
+                margin-left: 15px;
+                color: white;
+            }
+            .logo img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            /* Navigation Bar Styles */
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #FFFFFF;
+                font-size: 17px;
+                position: relative;
+                transition: color 0.3s ease;
+            }
+            /* Underline effect on hover */
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background-color: white;
+                left: 0;
+                bottom: -5px;
+                transition: width 0.3s ease;
+            }
+            nav ul li a:hover::after {
+                width: 100%;
+            }
+            /* Main Section Styles */
+            main {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 100vh;
+                padding: 0 20px;
+            }
+            .image-container {
+                width: 600px;
+                text-align: center;
+            }
+            .image-container img {
+                width: 100%;
+                height: auto;
+                max-width: 450px;
+                max-height: 450px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .text-container {
+                text-align: center;
+                width: 40%;
+            }
+            .text-container p {
+                font-size: 68px;
+                color: #8D9ABF;
+            }
+            .text-container button {
+                background-color: #8D9ABF;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 18px;
+                cursor: pointer;
+                margin-top: 100px;
+                transition: background-color 0.3s ease;
+            }
+            .text-container button:hover {
+                background-color: #6D7A9A;
+            }
+            /* Study Resources Section */
+            .resource-section {
+                min-height: 100vh;
+                background-color: #8D9ABF;
+                color: #FFFFFF;
+                padding: 60px 20px;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            .resource-section.visible {
+                opacity: 1;
+            }
+            .resource-section h2 {
+                font-size: 48px;
+                margin-bottom: 150px;
+            }
+            .resource-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 100px;
+            }
+            .resource-item {
+                text-align: center;
+            }
+            .resource-item img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .resource-item p {
+                margin-top: 15px;
+                font-size: 20px;
+            }
+            /* About Us Section */
+            .about-section {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 20px;
+                height: 100vh;
+                box-sizing: border-box;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            .about-section.visible {
+                opacity: 1;
+            }
+            .about-section h2 {
+                font-size: 36px;
+                color: #8D9ABF;
+                margin-bottom: 20px;
+            }
+            .about-section p {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 60px;
+                line-height: 1.5;
+                max-width: 500px;
+                text-align: justify;
+            }
+            .about-section .small-images {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .small-images img {
+                width: 90px;
+                margin: 20px;
+                height: 90px;
+            }
+            .about-section .main-image {
+                width: 300px; /* Increased size of the image */
+                height: auto;
+                margin-right: 100px; /* Keep the distance between image and content */
+            }
+            @media screen and (max-width: 768px) {
+                .about-section {
+                    flex-direction: column;
+                    height: auto;
+                    padding: 40px 20px;
+                }     
+                .about-section h2 {
+                    font-size: 28px;
+                }
+                .about-section p {
+                    font-size: 16px;
+                }
+                .about-section .main-image {
+                    width: 250px;
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+            footer {
+                text-align: center;
+                padding: 12px 0;
+                font-size: 14px;
+                color: white;
+                background-color: #8D9ABF;
+                width: 100%;
+            }
+            /* Responsive Styles */
+            @media screen and (max-width: 768px) {
+                main {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                .image-container img {
+                    max-width: 300px;
+                    height: 300px;
+                }
+                .resource-container {
+                    flex-direction: column;
+                    gap: 30px;
+                }
+                .about-section {
+                    flex-direction: column; /* Stack elements vertically on small screens */
+                    text-align: center; /* Center-align text */
+                }
+                .about-section .main-image {
+                    margin: 0 0 20px 0; /* Space below the image */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="studywtihme.png" alt="Studywithme Logo">
+                <p>Studywithme</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Homepage</a></li>
+                    <li><a href="#study-resources">Study Resources</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="image-container">
+                <img src="studywtihme.png" alt="Tote bag design">
+            </div>
+            <div class="text-container">
+                <p>Study</p>
+                <p>withme</p>
+                <button onclick="window.location.href='#about-us'">Learn more about us</button>
+            </div>
+        </main>
+        <section id="study-resources" class="resource-section">
+            <h2>Study Resources</h2>
+            <div class="resource-container">
+                <div class="resource-item">
+                    <a href="studynotes.html" target="_blank">
+                        <img src="studynotes.png" alt="Study Notes">
+                    </a>
+                    <p>Study Notes</p>
+                </div>
+                <div class="resource-item">
+                    <a href="studyplatforms.html" target="_blank">
+                        <img src="studyplatform.png" alt="Study Platforms">
+                    </a>
+                    <p>Study Platforms</p>
+                </div>
+                <div class="resource-item">
+                    <a href="learningquiz.html" target="_blank">
+                        <img src="learningstylequiz.png" alt="Learning Style Quiz">
+                    </a>
+                    <p>Learning Style Quiz</p>
+                </div>
+            </div>
+        </section>
+        <section id="about-us" class="about-section">
+            <div class="image-section">
+                <img src="aboutus.jpg" alt="Tote Bag" class="main-image">
+            </div>
+            <div>
+                <h2>About Us</h2>
+                <p>We (Tian Hui and Le Yi) started our study account in 2020, when we were secondary 2. With an objective to motivate students to strive for their personal best in their academics through the content that we post.</p>
+                <h2>Follow Us</h2>
+                <div class="small-images">
+                    <a href="https://www.instagram.com/studywithme_ly_th?igsh=Mnk2dXhyOGdqMW8=" target="_blank">
+                        <img src="Instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.linkedin.com/in/ho-tian-hui-171703283/" target="_blank">
+                        <img src="linkin.webp" alt="LinkedIn">
+                    </a>
+                    <a href="https://discord.gg/WDHwCtPs" target="_blank">
+                        <img src="discord.png" alt="Discord">
+                    </a>
+                    <a href="http://www.tiktok.com/@_th_hth" target="_blank">
+                        <img src="tiktok.jpg" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>2024 StudyWithMe. All rights reserved.</p>
+        </footer>
+        <script>
+            window.addEventListener('scroll', function () {
+                const resourceSection = document.getElementById('study-resources');
+                const aboutSection = document.getElementById('about-us');
+                
+                const resourceSectionPosition = resourceSection.getBoundingClientRect().top;
+                const aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.5;
+        
+                // For Study Resources
+                if (resourceSectionPosition < screenPosition) {
+                    resourceSection.classList.add('visible');
+                }
+        
+                // For About Us
+                if (aboutSectionPosition < screenPosition) {
+                    aboutSection.classList.add('visible');
+                }
+            });
+        </script>
+    </body>
+</html>
